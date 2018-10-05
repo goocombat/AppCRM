@@ -67,7 +67,7 @@
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="49dp"
-        android:layout_height="37"
+        android:layout_height="37dp"
         android:layout_marginBottom="2dp"
         android:src="@drawable/f03d3a419e"
         app:layout_constraintBottom_toTopOf="@+id/editLogin"
@@ -79,7 +79,7 @@
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="48dp"
-        android:layout_height="37"
+        android:layout_height="37dp"
         android:src="@drawable/b67df9d69d"
         app:layout_constraintBottom_toTopOf="@+id/editSenha"
         app:layout_constraintEnd_toEndOf="parent"
