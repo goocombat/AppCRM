@@ -17,9 +17,13 @@ public class VisitasAdapter extends RecyclerView.Adapter<VisitasAdapter.VisitasV
     private Context context;
     private List<Visita> visitas;
 
-    public VisitasAdapter(Context context, List<VisitasAdapter> visitas) {
+    public VisitasAdapter(Context context, List<Visita> visitas) {
         this.context = context;
         this.visitas = visitas;
+
+    }
+
+    public VisitasAdapter() {
 
     }
 
@@ -41,7 +45,7 @@ public class VisitasAdapter extends RecyclerView.Adapter<VisitasAdapter.VisitasV
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.visitas != null ? this.visitas.size() : 0;
     }
 
     public static class VisitasViewHolder extends RecyclerView.ViewHolder {
