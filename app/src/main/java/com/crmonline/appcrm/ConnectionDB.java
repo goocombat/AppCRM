@@ -22,23 +22,5 @@ public class ConnectionDB {
         }
     }
 
-    public static String getBox() throws SQLException {
-        PreparedStatement stm = conn.prepareStatement("SELECT pega_caixa();");
-        ResultSet rs = stm.executeQuery();
-        String toReturn = null;
-        while (rs.next()) {
-            toReturn = rs.getString(0);
-        }
-        return toReturn;
-    }
 
-    public static String getGoals() throws SQLException {
-        PreparedStatement stm = conn.prepareStatement("SELECT pega_metas();");
-        ResultSet rs = stm.executeQuery();
-        String toReturn = null;
-        while (rs.next()) {
-            toReturn = rs.getString(0);
-        }
-        return toReturn;
     }
-}

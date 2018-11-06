@@ -6,12 +6,20 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
+
 
 import com.crmonline.appcrm.Entities.Visita;
+import com.crmonline.appcrm.Services.AgendaService;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class HomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -20,24 +28,26 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-
-        List<Visita> visitas = new ArrayList<>();
-        Visita v = new Visita();
-        v.setNome("Teste");
-        v.setData(new Date());
-        v.setHora("00:00");
-
-        visitas.add(v);
-        //substituir pelo task do rest
-
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerViewHome);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setHasFixedSize(true);
 
-        recyclerView.setAdapter(new VisitasAdapter((getContext()), visitas));
+        AgendaService agendaService = RetrofitInstance.getInstance().create(AgendaService.class);
+        Call<List<Visita>> busca = agendaService.buscaVisitas();
 
+        busca.enqueue(new Callback<List<Visita>>() {
+            @Override
+            public void onResponse(Call<List<Visita>> call, Response<List<Visita>> response) {
+                if (response.isSuccessful()) {
+                    List<Visita> resultado = response.body();
+                    recyclerView.setAdapter(new VisitasAdapter(HomeActivity.this, resultado));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Visita>> call, Throwable t) {
+                Toast.makeText(HomeActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

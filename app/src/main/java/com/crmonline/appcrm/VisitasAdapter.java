@@ -23,9 +23,8 @@ public class VisitasAdapter extends RecyclerView.Adapter<VisitasAdapter.VisitasV
 
     }
 
-    public VisitasAdapter() {
 
-    }
+
 
     @Override
     public VisitasViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -39,8 +38,8 @@ public class VisitasAdapter extends RecyclerView.Adapter<VisitasAdapter.VisitasV
 
         Visita v = visitas.get(position);
         holder.txtTit.setText(v.getNome());
-        holder.txtDat.setText(v.getData().toString());
         holder.txtHor.setText(v.getHora());
+        holder.txtDat.setText(v.getData()+"");
     }
 
     @Override

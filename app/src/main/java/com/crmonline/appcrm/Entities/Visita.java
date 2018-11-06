@@ -3,12 +3,11 @@ package com.crmonline.appcrm.Entities;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Visita implements Serializable{
+public class Visita implements Serializable {
 
     private Integer codigo;
     private String nome;
     private String atendente;
-    private Date data;
     private String hora;
     private Integer id_visitante = 1;
     private Integer estadovisita = 0;
@@ -16,10 +15,8 @@ public class Visita implements Serializable{
     private String observacao;
     private Integer id_cliente;
     private Integer curso;
+    private Long data;
 
-    public Integer getCodigo() {
-        return codigo;
-    }
 
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
@@ -41,13 +38,6 @@ public class Visita implements Serializable{
         this.atendente = atendente;
     }
 
-    public Date getData() {
-        return data;
-    }
-
-    public void setData(Date data) {
-        this.data = data;
-    }
 
     public String getHora() {
         return hora;
@@ -103,5 +93,17 @@ public class Visita implements Serializable{
 
     public void setCurso(Integer curso) {
         this.curso = curso;
+    }
+
+    public Long getData() {
+        return data;
+    }
+
+    public void setData(Long data) {
+        this.data = data;
+    }
+
+    public Integer getCodigo() {
+        return codigo;
     }
 }
