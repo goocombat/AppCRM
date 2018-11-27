@@ -5,6 +5,7 @@
     android:background="@color/cardview_dark_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="4dp"
     tools:context=".HomeActivity">
 
     <android.support.v7.widget.RecyclerView
