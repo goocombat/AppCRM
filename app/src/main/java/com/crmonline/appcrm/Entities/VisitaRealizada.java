@@ -5,6 +5,9 @@ public class VisitaRealizada {
 	public int id;
 	public String texto;
 	public Integer classificacao;
+
+
+
 	
 	public int getId() {
 		return id;

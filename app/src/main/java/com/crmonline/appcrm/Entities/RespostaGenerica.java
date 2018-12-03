@@ -20,6 +20,10 @@ public class RespostaGenerica {
 	public void setRespostaTexto(String respostaTexto) {
 		this.respostaTexto = respostaTexto;
 	}
-	
 
+
+	@Override
+	public String toString() {
+		return respostaTexto;
+	}
 }
