@@ -35,6 +35,15 @@ public class HomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewHome);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        downloadLista();
+    }
+
+    public void downloadLista() {
 
         AgendaService agendaService = RetrofitInstance.getInstance().create(AgendaService.class);
         Call<List<Visita>> busca = agendaService.buscaVisitas();

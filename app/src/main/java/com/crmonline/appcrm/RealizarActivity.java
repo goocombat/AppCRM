@@ -32,20 +32,21 @@ public class RealizarActivity extends AppCompatActivity {
 
         Integer id = getIntent().getIntExtra("id", 0);
 
-        Log.i("teste", id.toString());
-
-        Toast.makeText(this, id.toString(), Toast.LENGTH_SHORT).show();
-
         visitaRealizada = new VisitaRealizada();
+        visitaRealizada.setId(id);
 
         Button button = findViewById(R.id.btnenviar);
         editText = findViewById(R.id.editText);
+
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                visitaRealizada.setClassificacao(ratingBar.getNumStars());
+
+
+                visitaRealizada.setClassificacao((int) ratingBar.getRating());
                 visitaRealizada.setTexto(editText.getText().toString().trim());
 
                 AgendaService Agnd = RetrofitInstance.getInstance().create(AgendaService.class);
@@ -59,16 +60,18 @@ public class RealizarActivity extends AppCompatActivity {
 
                             if (resposta != null){
                                 if (resposta.isResposta()){
-                                    Toast.makeText(RealizarActivity.this, "Sucesso ao Inserir", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RealizarActivity.this, resposta.toString(), Toast.LENGTH_SHORT).show();
+                                    finish();
                                 }else{
-                                    Toast.makeText(RealizarActivity.this, "Falha ao Inserir", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RealizarActivity.this, "Falha ao Inserir, tente novamente", Toast.LENGTH_SHORT).show();
 
                                 }
-                                Toast.makeText(RealizarActivity.this, resposta.toString(), Toast.LENGTH_SHORT).show();
+
 
                             }
                         }
                     }
+
 
                     @Override
                     public void onFailure(Call<RespostaGenerica> call, Throwable t) {
@@ -80,5 +83,6 @@ public class RealizarActivity extends AppCompatActivity {
         });
 
     }
+
 
 }

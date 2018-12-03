@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnAcessar;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         editLogin = findViewById(R.id.editLogin);
         editSenha = findViewById(R.id.editSenha);
         btnAcessar = findViewById(R.id.btnAcessar);
+
 
         btnAcessar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         }
+
 
                         @Override
                         public void onFailure(Call<Usuario> call, Throwable t) {
