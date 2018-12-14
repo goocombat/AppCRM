@@ -53,6 +53,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onResponse(Call<List<Visita>> call, Response<List<Visita>> response) {
                 if (response.isSuccessful()) {
                     List<Visita> resultado = response.body();
+                    if(resultado.isEmpty()){
+                        Toast.makeText(HomeActivity.this, "Você não tem visitas agendadas", Toast.LENGTH_SHORT).show();
+                    }
                     recyclerView.setAdapter(new VisitasAdapter(HomeActivity.this, resultado));
                 }
             }
